@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Main</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/layouts.css" />
+    <link rel="stylesheet" href="../css/swiper.css" />
+</head>
+<body>
+<div class="large-container">
+	<div class="container" style="">
+		<th:block class="--header" th:replace="~{layouts/header :: header}"></th:block>
+		<div class="content">
+			<th:block class="--swiper" th:replace="~{layouts/swiper :: swiper}"></th:block>
+			<p>Items</p>
+			<div>
+				<div class="Item-container">
+					<div class="Item-card">
+						<div class="item-img-contain">
+							<img class="item-img" src="imgs/img1.jpg">
+						</div>
+						<div class="item-text">
+							<p class="item-kind item-context">T4, PCS 45/ L 02/ T 530, transistor K.</p>
+							<p class="item-name item-context">TP 1</h3>
+							<p class="item-value item-context">$129.99</p>
+						</div>
+						<a class="goto-item"></a>
+					</div>
+					<div class="Item-card">
+						<div class="item-img-contain">
+							<img class="item-img" src="imgs/img2.jpg">
+						</div>
+						<div class="item-text">
+							<p class="item-kind item-context">T4, PCS 45/ L 02/ T 530, transistor K.</p>
+							<p class="item-name item-context">TP 1</h3>
+							<p class="item-value item-context">$129.99</p>
+						</div>
+						<a class="goto-item"></a>
+					</div>
+					<div class="Item-card">
+						<div class="item-img-contain">
+							<img class="item-img" src="imgs/img10.jpg">
+						</div>
+						<div class="item-text">
+							<p class="item-kind item-context">T4, PCS 45/ L 02/ T 530, transistor K.</p>
+							<p class="item-name item-context">TP 1</h3>
+							<p class="item-value item-context">$129.99</p>
+						</div>
+						<a class="goto-item"></a>
+					</div>
+					
+				</div>
+			</div>
+			<p>Ads</p>
+		</div>
+	    <p th:text="'Message: ' + ${message}">Message will appear here</p>
+	</div>
+	<th:block class="--footer" th:replace="~{layouts/footer :: footer}"></th:block>
+</div>
+</body>
+</html>
