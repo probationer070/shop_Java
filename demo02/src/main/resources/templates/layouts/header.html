@@ -2,15 +2,19 @@
 <header>
 	<div class="--content d-flex justify-content-between border border-dark">
 		<div class="--logo">
-			<div class="--logo-img">로고</div>
+			<div class="--logo-img"><a href="/main">로고</a></div>
 		</div>
 		<div class="--navbar">
 			<ul class="m-0 p-0 d-inline-flex border border-dark">
-				<li class="--nav-item dropdown"><a>Home</a></li>
-				<li class="--nav-item dropdown"><a>Item</a></li>
-				<li class="--nav-item dropdown"><a>MyPage</a></li>
-				<li class="--nav-item dropdown"><a>Login</a></li>
-				<li class="--nav-item dropdown"><a>Join</a></li>
+				<!-- <div th:text="${user}"></div> -->
+				<li sec:authorize="hasRole('USER')" class="--nav-item dropdown"><a href="/main">Home</a></li>
+				<li sec:authorize="hasRole('USER')" class="--nav-item dropdown"><a>Item</a></li>
+				<li sec:authorize="hasRole('USER')" class="--nav-item dropdown"><a>MyPage</a></li>
+				<li sec:authorize="hasRole('ADMIN')" class="--nav-item dropdown"><a>ADMINPAGE</a></li>
+				<li sec:authorize="hasRole('ROLE_ADMIN')" class="--nav-item dropdown"><a>ItemFIX</a></li>	
+				<li sec:authorize="isAnonymous()" class="--nav-item dropdown"><a href="/signin">Login</a></li>
+				<li sec:authorize="isAnonymous()" class="--nav-item dropdown"><a href="/signup">Join</a></li>
+				<li sec:authorize="isAuthenticated()" class="--nav-item dropdown"><a href="/logout">Logout</a></li>
 			</ul>
 		</div>
 	</div>

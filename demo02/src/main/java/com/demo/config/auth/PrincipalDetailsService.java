@@ -8,9 +8,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.demo.entity.User;
-import com.demo.repo.UserRepo;
+import com.demo.domain.user.User;
+import com.demo.domain.user.UserRepo;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class PrincipalDetailsService implements UserDetailsService {
 
@@ -25,8 +28,7 @@ public class PrincipalDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
         User userEntity = userEntityOptional.get();
-        System.out.println("Password ===>"+userEntity.getPassword());
-        
+        log.info("USER INFO ===> "+userEntity);
         return new PrincipalDetails(userEntity);
     }
 }

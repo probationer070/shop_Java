@@ -6,7 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.demo.entity.User;
+import com.demo.domain.user.User;
+import com.demo.dto.signupDto;
 import com.demo.service.AuthService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,9 +25,7 @@ public class AuthController {
 	private AuthService authService;
 	
 	@GetMapping("/signin")
-	public String signin(HttpServletRequest req, HttpServletResponse res ,Model model) {
-		model.addAttribute("id", req.getParameter("id"));
-		model.addAttribute("password", req.getParameter("password"));
+	public String signin() {
 		return "Main/signin";
 	}
 
@@ -37,8 +36,9 @@ public class AuthController {
 
 	
 	@PostMapping("/signup")
-    public String signUpPost(User user) {
-        // User newUser = user; //새로운 유저 받음
+    public String signUpPost(signupDto signupDto) {
+        User user = signupDto.toEntity(); //새로운 유저 받음
+        
         User userEntity = authService.signup(user);
         log.info("newUser ==> " + userEntity);
 

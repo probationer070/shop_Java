@@ -1,6 +1,6 @@
 package com.demo.dto;
 
-import com.demo.entity.User;
+import com.demo.domain.user.User;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.demo.config;
+	package com.demo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -13,6 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 
 
 // 현재는 
@@ -25,9 +26,12 @@ public class SecurityConfig {
 	
 	@Bean	// 특정 Http 요청에 대한 웹 기반 보안 구성. 인증/인가 및 로그인 및 로그아웃 설정
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http
-			.cors(Customizer.withDefaults())
+		HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
+		requestCache.setMatchingRequestParameterName(null);
+		
+		http.cors(Customizer.withDefaults())
 			.csrf(csrf -> csrf.disable())
+			.requestCache(request -> request.requestCache(requestCache))
 			.httpBasic(httpBasic -> httpBasic.disable())
 			.sessionManagement((session) -> session
 					.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
@@ -36,13 +40,14 @@ public class SecurityConfig {
 						 .loginProcessingUrl("/signin")
 						 .usernameParameter("id")
 						 .passwordParameter("password")
-						 .defaultSuccessUrl("/hi").permitAll())
+						 .defaultSuccessUrl("/main").permitAll())
 			.logout(logout -> logout
 					.logoutUrl("/logout")
 					.logoutSuccessUrl("/signin")
 					.invalidateHttpSession(true))
 			.authorizeHttpRequests(authReq ->
-					authReq.requestMatchers("/", "/signin", "/signup").permitAll()
+					authReq.requestMatchers("/","/main", "/signin", "/signup").permitAll()
+					.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 					.anyRequest().authenticated());
 		return http.build();
 	}

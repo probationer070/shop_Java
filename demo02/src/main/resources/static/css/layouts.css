@@ -24,16 +24,16 @@ a {
 	text-decoration: none;
 }
 
+p {
+	color: #000;
+}
 
-.--logo {
+.--logo-img a {
+	font-size: 13px;	
 	padding: 4px 8px;
 }
 
-.--login-text {
-	padding: 4px 8px;
-}
-
-.--nav-item {
+.--nav-item a {
 	padding: 4px 8px;
 	font-size: 13px;
 	color: #2d2d2f;
@@ -110,6 +110,16 @@ a {
     text-overflow: ellipsis;
 }
 
+.item-foot-goto {
+	text-align: center;
+}
+
+.goto-item {
+
+	width: 100%;
+	padding: 0;
+}
+
 /* Footer */
 
 
@@ -161,11 +171,12 @@ a {
 }
 
 .news_input {
-	background-color: #000;
-	color: gray;
 	border: 1px solid #2d2d2f;
-	padding: 16px;
-	font-size: 16px;
+
+	position: relative;
+    width: 100%;
+    background-color: transparent;
+    padding: 16px;
 }
 
 .navColumn {
@@ -183,9 +194,20 @@ a {
 	display: flex;
 	align-items: center;
 }
+.newsletter__form {
+	display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
 
-.icon {
-	
+.little-newSletter {
+	display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.input-main {
+	position: relative;
 }
 
 .footPayMent {
@@ -222,6 +244,11 @@ a {
 	padding: 0 80px;
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
+}
+
+.input-hold {
+	display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .copyright {

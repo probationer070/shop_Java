@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <title>Main</title>
@@ -17,40 +18,31 @@
 			<p>Items</p>
 			<div>
 				<div class="Item-container">
-					<div class="Item-card">
+					<div class="Item-card" th:each="item : ${items}">
+						<a class="goto-item" th:href="@{item/view/{id}(id=${item.getId()})}">
 						<div class="item-img-contain">
-							<img class="item-img" src="imgs/img1.jpg">
+							<img class="item-img" th:src="@{${item.getImgPath()}}" alt="..." />
 						</div>
 						<div class="item-text">
-							<p class="item-kind item-context">T4, PCS 45/ L 02/ T 530, transistor K.</p>
-							<p class="item-name item-context">TP 1</h3>
-							<p class="item-value item-context">$129.99</p>
+							<p class="item-kind item-context" th:text="${item.getKind()}"></p>
+							<p class="item-name item-context" th:text="${item.getName()}"></h3>
+							<p class="item-value item-context" th:text="'$'+${item.getItem_price()}"></p>
 						</div>
-						<a class="goto-item"></a>
-					</div>
-					<div class="Item-card">
-						<div class="item-img-contain">
-							<img class="item-img" src="imgs/img2.jpg">
+						</a>
+						<div class="item-foot-goto">
+							<button class="Delete-item btn btn-danger" th:href="@{item/delete/{id}(id=${item.getId()})}">Delete</button>
+							<button class="Modify-item btn btn-primary" th:href="@{item/modify/{id}(id=${item.getId()})}">Modify</button>
 						</div>
-						<div class="item-text">
-							<p class="item-kind item-context">T4, PCS 45/ L 02/ T 530, transistor K.</p>
-							<p class="item-name item-context">TP 1</h3>
-							<p class="item-value item-context">$129.99</p>
-						</div>
-						<a class="goto-item"></a>
-					</div>
-					<div class="Item-card">
-						<div class="item-img-contain">
-							<img class="item-img" src="imgs/img10.jpg">
-						</div>
-						<div class="item-text">
-							<p class="item-kind item-context">T4, PCS 45/ L 02/ T 530, transistor K.</p>
-							<p class="item-name item-context">TP 1</h3>
-							<p class="item-value item-context">$129.99</p>
-						</div>
-						<a class="goto-item"></a>
+						
+						
 					</div>
 					
+					
+				</div>
+				<div align="right">
+					<a href="/item/new">
+						<button type="button" id="AddItem">Add Item</button>
+					</a>
 				</div>
 			</div>
 			<p>Ads</p>
@@ -59,5 +51,6 @@
 	</div>
 	<th:block class="--footer" th:replace="~{layouts/footer :: footer}"></th:block>
 </div>
+
 </body>
 </html>
