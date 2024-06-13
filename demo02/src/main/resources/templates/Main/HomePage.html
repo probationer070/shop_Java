@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/layouts.css" />
     <link rel="stylesheet" href="../css/swiper.css" />
+    <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>    
+    <script type="text/javascript" src="../js/layout.js"></script>
 </head>
 <body>
 <div class="large-container">
@@ -16,6 +18,52 @@
 		<div class="content">
 			<th:block class="--swiper" th:replace="~{layouts/swiper :: swiper}"></th:block>
 			<p>Items</p>
+			<div class="site-desc">
+				<section class="site-desc-direction">
+					<div class="TwoColumn-Sec">
+						<div class="TwoColumn-Sec-Col">
+							<div class="TwoCol-Sec-MediaContainer">
+								<img class="colimg" src="images/cont2.jpg">
+							</div>
+						</div>
+						<div class="TwoColumn-Sec-Col">
+							<div class="TwoCol-Sec-MediaContainer">
+								<div class="Cols-Title mb-4">
+									<h1>What We Stand For</h1>
+								</div>
+								<div class="Cols-event-Item">
+									<div class="Cols-icon">
+										<img src="images/icon1.png">
+									</div>
+									<div class="Cols-context mb-1">
+										<h2>IMPACT PROTECTION</h2>
+										<p>Pioneering impact protection technology that protects your devices like no other.</p>
+									</div>
+								</div>
+								<div class="Cols-event-Item">
+									<div class="Cols-icon">
+										<img src="images/icon2.png">
+									</div>
+									<div class="Cols-context mb-1">
+										<h2>SUSTAINABILITY</h2>
+										<p>From recycled materials to intelligent bio-technology formulas, we protect your tech and our planet.</p>
+									</div>
+								</div>
+								<div class="Cols-event-Item">
+									<div class="Cols-icon">
+										<img src="images/icon3.png">
+									</div>
+									<div class="Cols-context mb-1">
+										<h2>DESIGN INNOVATION</h2>
+										<p>Whether it’s product design or lab-developed material additives, we are always innovating our products.</p>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
 			<div>
 				<div class="Item-container">
 					<div class="Item-card" th:each="item : ${items}">
@@ -30,8 +78,8 @@
 						</div>
 						</a>
 						<div class="item-foot-goto">
-							<button class="Delete-item btn btn-danger" th:href="@{item/delete/{id}(id=${item.getId()})}">Delete</button>
-							<button class="Modify-item btn btn-primary" th:href="@{item/modify/{id}(id=${item.getId()})}">Modify</button>
+							<a th:href="@{item/delete/{id}(id=${item.getId()})}"><button class="Delete-item btn btn-danger">Delete</button></a>
+							<a th:href="@{item/modify/{id}(id=${item.getId()})}"><button class="Modify-item btn btn-primary">Modify</button></a>
 						</div>
 						
 						

@@ -28,6 +28,8 @@ public class User {
 	private String password;
 	private String address;
 	
+	// 로그인 횟수, 잠금 시간, 수정시간
+	
 	private String role; // 권한
 
     private LocalDateTime createDate; // 날짜

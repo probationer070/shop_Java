@@ -18,6 +18,7 @@ import com.demo.domain.Item.Item;
 import com.demo.domain.user.User;
 import com.demo.service.ItemService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,14 +30,15 @@ public class BoardController {
 	@Autowired
 	private ItemService itemService;
 	
-	@GetMapping("/")
+	@GetMapping("/")	// 로그인 안 한 유저
 	public String nice(Model model) {
 		List<Item> items = itemService.TotalitemView();
 		model.addAttribute("items", items);
 		
-		return "/main";
+		return "/Main/Homepage";
 	}
 	
+	// 메인 페이지 (로그인 유저) - ADMIN, USER
 	@GetMapping("/main")
 	public String Home(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		List<Item> items = itemService.TotalitemView();
@@ -91,8 +93,11 @@ public class BoardController {
 		
 		return "/Main/itemView";
 	}
+
+	
+	
 	// 상품 삭제
-	@PostMapping("/item/delete/{id}")
+	@GetMapping("/item/delete/{id}")
 	public String itemDelete(@PathVariable("id") Integer id, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		if(principalDetails.getUser().getRole().equals("ROLE_ADMIN")) {
 		    // 판매자
@@ -109,8 +114,8 @@ public class BoardController {
 		} else {
 		    // 일반 회원이면 거절 -> main
 		    return "redirect:/main";
-		    }
 		}
+	}
 	
 	
 }

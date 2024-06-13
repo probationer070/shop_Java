@@ -38,15 +38,15 @@ public class SecurityConfig {
 			.formLogin(formlogin -> 
 				formlogin.loginPage("/signin")
 						 .loginProcessingUrl("/signin")
-						 .usernameParameter("id")
+						 .usernameParameter("username")
 						 .passwordParameter("password")
-						 .defaultSuccessUrl("/main").permitAll())
+						 .defaultSuccessUrl("/main", true).permitAll())
 			.logout(logout -> logout
 					.logoutUrl("/logout")
 					.logoutSuccessUrl("/signin")
 					.invalidateHttpSession(true))
 			.authorizeHttpRequests(authReq ->
-					authReq.requestMatchers("/","/main", "/signin", "/signup").permitAll()
+					authReq.requestMatchers("/", "/item/view/**", "/signin", "/signup").permitAll()
 					.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 					.anyRequest().authenticated());
 		return http.build();
