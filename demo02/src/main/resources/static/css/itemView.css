@@ -125,6 +125,15 @@ div .pre-Product-Body {
     line-height: 28px;
 }
 
+/* Item Stock */
+.stockCnt {
+	width: 100%;
+}
+
+.stockCnt input {
+	padding: 4px 8px;
+}
+
 /* Item Input */
 .item-content {
 	width: 80%;

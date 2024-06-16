@@ -17,11 +17,11 @@ $(function() {
 		'mouseout' : () => {
 			$("img[class=icon]").attr("src", "/images/cart-w.png");
 		},
-		'click': () => {
+		/*'click': () => {
 			var itemId = $('input[name=itemId]').val();
 			$("form[name=ItemServ]").attr('action', '/addCartItem/'+itemId);
 			$("form[name=ItemServ]").submit();
-		}
+		}*/
 	})
 	
 	
