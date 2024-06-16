@@ -27,8 +27,10 @@ public class UserVo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(unique = true) // username 중목 안됨
 	private String username;
+	
 	private String email;
 	private String password;
 	private String address;

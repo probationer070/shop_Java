@@ -4,13 +4,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.catalina.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.demo.domain.cartItem.CartItemVo;
 import com.demo.domain.user.UserVo;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -23,14 +21,14 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Setter;
 
 @Table(name="Cart")
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -45,8 +43,8 @@ public class CartVo {
 	
 	private int count;	// 카트 담긴 상품 수
 	
-	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
-	private List<CartItemVo> cart_items = new ArrayList<>();
+	@OneToMany(mappedBy = "cart")
+	private final List<CartItemVo> cartItems = new ArrayList<>();
 	
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	private LocalDate createDate;

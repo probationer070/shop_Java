@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.demo.config.auth.PrincipalDetails;
 import com.demo.domain.Item.ItemVo;
@@ -33,16 +34,18 @@ public class UserController {
 	@Autowired
 	private CartService cartService;
 	
-	@PostMapping("/addCartItem/{id}")
+	@PostMapping("/addCartItem/{id}/{itemId}")
 	public String addCartItem(@PathVariable("id") int id,
 							  @PathVariable("itemId") int itemId,
-							  int amount) {
+							  @RequestParam("amount") int amount,
+							  Model model) {
 		UserVo user = userService.findUser(id);
 		ItemVo item = itemService.itemView(itemId);
-		
+		log.info("item ====> "+ item);
 		cartService.addCart(user, item, amount);
+		// model.addAttribute("itemid", itemId);
 
-		return "redirect:/itemView/{id}";
+		return "redirect:/itemViews/{itemId}";
 	}
 	
 	 // 장바구니 페이지 접속
@@ -68,13 +71,14 @@ public class UserController {
             for (CartItemVo cartitem : cartItemList) {
                 totalPrice += cartitem.getCount() * cartitem.getItem().getItem_price();
             }
-
+            
+            model.addAttribute("content", "user/UserCart");
             model.addAttribute("totalPrice", totalPrice);
             model.addAttribute("totalCount", userCart.getCount());
             model.addAttribute("cartItems", cartItemList);
             model.addAttribute("user", userService.findUser(id));
 
-            return "/user/Main";
+            return "user/Main";
         }
         // 로그인 id와 장바구니 접속 id가 같지 않는 경우
         else {

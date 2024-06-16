@@ -52,12 +52,17 @@ public class CartService {
 		ItemVo item = itemRepo.findItemById(newitem.getId());
 		CartItemVo cartItem = cartItemRepo.findByCartIdAndItemId(cart.getId(), item.getId());
 		
-		if(cartItem == null) {
+		if (cartItem == null) {
+            cartItem = CartItemVo.createCartItem(cart, item, amount);
+            cartItemRepo.save(cartItem);
+        }
+		
+		else {
 			CartItemVo update = cartItem;
 			update.setCart(cartItem.getCart());
-			update.setItem(cartItem.getItem());
-			update.addCount(amount);
-			update.setCount(update.getCount());
+            update.setItem(cartItem.getItem());
+            update.addCount(amount);
+            update.setCount(update.getCount());
 			cartItemRepo.save(update);
 		}
 		
