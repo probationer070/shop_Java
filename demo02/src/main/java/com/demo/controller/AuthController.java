@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.demo.domain.user.User;
+import com.demo.domain.user.UserVo;
 import com.demo.dto.signupDto;
 import com.demo.service.AuthService;
 
@@ -37,9 +37,9 @@ public class AuthController {
 	
 	@PostMapping("/signup")
     public String signUpPost(signupDto signupDto) {
-        User user = signupDto.toEntity(); //새로운 유저 받음
+        UserVo user = signupDto.toEntity(); //새로운 유저 받음
         
-        User userEntity = authService.signup(user);
+        UserVo userEntity = authService.signup(user);
         log.info("newUser ==> " + userEntity);
 
         return "Main/signin";

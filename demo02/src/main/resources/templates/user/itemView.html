@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
@@ -10,17 +10,18 @@
     <link rel="stylesheet" href="/css/itemView.css" />
     <link rel="stylesheet" href="/css/swiper.css" />
     <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>    
-    <!-- <script type="text/javascript" src="../js/layout.js"></script> -->
+    <script type="text/javascript" src="../js/layout.js"></script>
     <script type="text/javascript" src="../js/item.js"></script>
 </head>
 <body>
 <div class="large-container">
 	<div class="container">
-		<th:block class="--header" th:replace="~{layouts/header :: header}"></th:block>
+		<th:block class="--header" th:replace="~{user/header :: header}"></th:block> -->
+		
+		<th:block class="--itemView" th:fragment="itemView">
 		<form action="" method="post" name="ItemServ">
 		<div class="content">
 		
-		<th:block class="--Home" th:fragment="Home">
 			<input name="itemId" type="hidden" th:value="${item.getId()}">
 			<div class="pre-Product-Body">
 				<div class="Product-Column-media">
@@ -53,14 +54,13 @@
 						</div>
 					</div>
 				</div>
-				<div></div>
 			</div>
 		</div>
-		</th:block>
 	    </form>
-	</div>
+		</th:block>
+	<!-- </div>
 	<th:block class="--footer" th:replace="~{layouts/footer :: footer}"></th:block>
 </div>
 
 </body>
-</html>
+</html> -->

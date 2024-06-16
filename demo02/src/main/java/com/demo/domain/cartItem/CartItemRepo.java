@@ -2,8 +2,8 @@ package com.demo.domain.cartItem;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.demo.domain.cart.Cart;
+public interface CartItemRepo extends JpaRepository<CartItemVo, Integer> {
 
-public interface CartItemRepo extends JpaRepository<Cart, Integer> {
+	CartItemVo findByCartIdAndItemId(int id, Long id2);
 	
 }

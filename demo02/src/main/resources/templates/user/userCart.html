@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="large-container">
+	<div class="container" style="">
+		<th:block class="--header" th:replace="~{user/header :: header}"></th:block>
+		<div class="content">
+			<th:block class="--UserCart" th:fragment="UserCart">
+				<p>Cart</p>
+			</th:block>
+		</div>
+	</div>
+	<th:block class="--footer" th:replace="~{layouts/footer :: footer}"></th:block>
+</div>
+</body>
+</html>

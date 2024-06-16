@@ -1,6 +1,6 @@
 package com.demo.dto;
 
-import com.demo.domain.user.User;
+import com.demo.domain.user.UserVo;
 
 import lombok.Data;
 
@@ -11,8 +11,8 @@ public class signupDto {
     private String email;
     private String name;
 
-    public User toEntity() {
-        return User.builder()
+    public UserVo toEntity() {
+        return UserVo.builder()
                 .username(username)
                 .password(password)
                 .email(email)

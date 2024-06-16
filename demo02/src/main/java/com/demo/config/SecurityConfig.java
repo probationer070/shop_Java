@@ -46,7 +46,7 @@ public class SecurityConfig {
 					.logoutSuccessUrl("/signin")
 					.invalidateHttpSession(true))
 			.authorizeHttpRequests(authReq ->
-					authReq.requestMatchers("/", "/item/view/**", "/signin", "/signup").permitAll()
+					authReq.requestMatchers("/", "/itemView/**", "/signin", "/signup", "/uploads/**").permitAll()
 					.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 					.anyRequest().authenticated());
 		return http.build();

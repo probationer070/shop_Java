@@ -14,8 +14,6 @@
 				<li sec:authorize="hasRole('ADMIN')" class="--nav-item dropdown"><a href="/memberFix">MemberFIX</a></li>
 				<li sec:authorize="hasRole('ADMIN')" class="--nav-item dropdown"><a href="/deliveryFix">DeliveryFIX</a></li>
 				<li sec:authorize="hasRole('ROLE_ADMIN')" class="--nav-item dropdown"><a href="/itemFix">ItemFIX</a></li>	
-				<li sec:authorize="isAnonymous()" class="--nav-item dropdown"><a href="/signin">Login</a></li>
-				<li sec:authorize="isAnonymous()" class="--nav-item dropdown"><a href="/signup">Join</a></li>
 				<li sec:authorize="isAuthenticated()" class="--nav-item dropdown"><a href="/logout">Logout</a></li>
 			</ul>
 		</div>

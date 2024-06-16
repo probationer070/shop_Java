@@ -9,6 +9,28 @@ ul {
 	list-style-type: none; 
 }
 
+/* LOADING */
+
+.load {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    opacity: 0.8;
+    background: white;
+    z-index: 99;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .load > img {
+    margin: 55% auto;
+    z-index: 100;
+} */
+
 /* .container {
 	height: 2000px
 } */
@@ -29,13 +51,13 @@ p {
 }
 
 .--logo-img a {
-	font-size: 13px;	
+	font-size: 14px;	
 	padding: 4px 8px;
 }
 
 .--nav-item a {
 	padding: 4px 8px;
-	font-size: 13px;
+	font-size: 14px;
 	color: #2d2d2f;
 }
 
@@ -43,6 +65,10 @@ p {
 	text-align: center;
 	font-weight: bold;
 	
+}
+
+.MainBanner > h1.High-Banner {
+	font-weight: 900;
 }
 
 .dropdown-content {

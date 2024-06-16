@@ -1,4 +1,4 @@
-package 	com.demo.service;
+package com.demo.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,24 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.demo.domain.Item.Item;
+import com.demo.domain.Item.ItemVo;
 import com.demo.domain.Item.ItemRepo;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class ItemService {
 
 	@Autowired
-	private ItemRepo itemRepo;
+	final ItemRepo itemRepo;
 	
-	public void saveItem(Item item, MultipartFile imgFile) throws Exception {
+	// 수정 및 보완 필요
+	public ItemVo saveItem(ItemVo item, MultipartFile imgFile) throws Exception {
 		String oriImgName = imgFile.getOriginalFilename();
 		String imgName = "";
-		
-		String projectPath = System.getProperty("user.dir") + "/src/main/resources/static/images/";
+		String projectPath = item.getImgPath();
 		
 		UUID uuid = UUID.randomUUID();
 		
@@ -39,21 +39,33 @@ public class ItemService {
         imgFile.transferTo(saveFile);
 
         item.setImgName(imgName);
-        item.setImgPath("images/" + imgName);
+        item.setImgPath("/uploads/" + imgName);
 		
-		itemRepo.save(item);
+		return itemRepo.save(item);
 	}
 
-	public List<Item> TotalitemView() {
+	public List<ItemVo> TotalitemView() {
 		return itemRepo.findAll();
 	}
 
-	public Item itemView(int id) {
+	public ItemVo itemView(int id) {
 		return itemRepo.findById((long) id).get();
 	}
 	
 	@Transactional
 	public void itemDelete(Integer id) {
 		itemRepo.deleteById(id);
+	}
+	
+	public void itemModify(ItemVo item, MultipartFile imgFile) {
+		ItemVo update = itemRepo.findItemById(item.getId());
+		update.setIsSoldout(item.getIsSoldout());
+		update.setKind(item.getKind());
+		update.setName(item.getName());
+		update.setDetail(item.getDetail());
+		update.setItem_price(item.getItem_price());
+		update.setStock(item.getStock());
+		// update.setImgPath(item.getImgPath());
+		itemRepo.save(update);
 	}
 }

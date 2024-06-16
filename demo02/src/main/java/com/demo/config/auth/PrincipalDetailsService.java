@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.demo.domain.user.User;
+import com.demo.domain.user.UserVo;
 import com.demo.domain.user.UserRepo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,12 +23,12 @@ public class PrincipalDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> userEntityOptional = userRepo.findByUsername(username);
+        Optional<UserVo> userEntityOptional = userRepo.findByUsername(username);
         if (userEntityOptional.isEmpty()) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
-        User userEntity = userEntityOptional.get();
-        log.info("USER INFO ===> "+userEntity);
+        UserVo userEntity = userEntityOptional.get();
+        // log.info("USER INFO ===> "+userEntity);
         return new PrincipalDetails(userEntity);
     }
 }

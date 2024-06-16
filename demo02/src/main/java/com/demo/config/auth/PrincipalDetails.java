@@ -6,7 +6,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.demo.domain.user.User;
+import com.demo.domain.user.UserVo;
 
 import lombok.Data;
 
@@ -14,9 +14,9 @@ import lombok.Data;
 public class PrincipalDetails implements UserDetails {
 	
 	private static final long serialVersionUID = 1L;
-	private User user;
+	private UserVo user;
 	
-	public PrincipalDetails(User user) {
+	public PrincipalDetails(UserVo user) {
 		this.user = user;
 	}
 	
