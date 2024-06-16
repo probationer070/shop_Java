@@ -19,9 +19,11 @@
 		<th:block class="--header" th:replace="~{user/header :: header}"></th:block> -->
 		
 		<th:block class="--itemView" th:fragment="itemView">
-		<form action="" method="post" name="ItemServ">
+		<form th:action="@{/addCartItem/{id}/{itemId}(id=${user.id}, itemId=${item.id})}" method="post" name="ItemServ">
 		<div class="content">
-		
+			<!-- <p th:text="${item.id}"></p>
+			<p th:text="${user.id}"></p> -->
+			
 			<input name="itemId" type="hidden" th:value="${item.getId()}">
 			<div class="pre-Product-Body">
 				<div class="Product-Column-media">
@@ -40,8 +42,12 @@
 							</div>
 						</div>
 						<p class="Product-content-Desc fz-14_21" th:text="${item.getDetail()}"></p>
+						<div class="stockCnt mb-4">
+							<label>Amount : </label>
+							<input type="text" class="amount" name="amount" value="1" placeholder="수량">
+						</div>
 						<div class="Product-content-Buy">
-							<button type="button" name="add" class="Product-add_btn btn-primary-common btn-Button-fullWidth">
+							<button type="submit" name="add" class="Product-add_btn btn-primary-common btn-Button-fullWidth">
 								<img class="icon" src="/images/cart-w.png" style="width: 40px; height: 40px;">
 								<span class="m-3">Add to CART</span>
 							</button>

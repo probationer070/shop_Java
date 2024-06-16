@@ -18,15 +18,13 @@
 <div class="large-container">
 	<div class="container" style="">
 		<th:block class="--header" th:replace="~{admin/header :: header}"></th:block>
+		<p>ADMIN</p>
 		<div class="content">
 			<th:block class="--Home" th:replace="~{${content}}"></th:block>			
 		</div>
 	    <p th:text="'Message: ' + ${message}">Message will appear here</p>
 	</div>
 	<th:block class="--footer" th:replace="~{layouts/footer :: footer}"></th:block>
-</div>
-<div class="load" id="load">
-	<img src="images/loading2.webp">
 </div>
 </body>
 </html>
