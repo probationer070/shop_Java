@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.icol4 input {
+	width: 5%;
+	text-align: center;
+}
+.icol2 input {
+
+}
+
+.icol input {
+	border: none;
+	background: transparent;
+}
