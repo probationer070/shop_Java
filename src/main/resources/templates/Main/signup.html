@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Signup</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/signup.css" />
+</head>
+<body>
+<div class="top-nav mt-2">
+	<a href="/">Logo</a>
+	<a href="/">MAIN</a>
+</div>
+<div class="background-total">
+	<form action="/signup" method="post" name="sign">
+	<div class="MainContainer pt-10">
+		<div class="auth-container contain-bg1 txt-light">
+			<div class="text-container">
+				<h1>Sign up</h1>
+				<p>Welcome to My shop</p>
+			</div>
+		    <div class="usrn-container mt-20">
+				<div class="w-100">
+			        <label for="username">Login ID (username)</label>
+				</div>
+		    	<div class="input-cont w-100">
+			        <input class="w-100 p-2" type="text" id="username" name="username" placeholder="root" required="required"/>
+		    	</div>
+		    </div>
+			
+			<div class="password-container mt-20">
+			    <div class="w-100">
+			    	<div>
+			        <label for="password">Password</label>
+			    	</div>
+			    	<div class="input-cont w-100">
+			        <input class="w-100 p-2" type="password" id="password" name="password" placeholder="1234" required="required"/>
+			    	</div>
+			    </div>
+			</div>
+			
+			<div class="email-container mt-20">
+			    <div>
+	  		    	<div>
+			        <label for="email">Email</label>
+	  		    	</div>
+	  		    	<div class="input-cont w-100">
+			        <input class="w-100 p-2" type="email" id="email" name="email" placeholder="root@naver.com" required="required"/>
+	  		    	</div>
+			    </div>
+			</div>
+			
+			<div class="name-container mt-20">
+			    <div>
+			    	<div>
+			        <label for="name">Your name</label>
+			    	</div>
+	   		    	<div class="input-cont w-100">
+			        <input class="w-100 p-2" type="text" id="name" name="name" placeholder="홍길동" required="required"/>
+	   		    	</div>
+			    </div>
+			</div>
+			
+			<div class="button-cont">
+			    <button class="btn-m-prime" id="signup" type="submit">Continue ></button>
+			</div>
+		</div>
+	</div>
+	</form>
+</div>
+</body>
+</html>

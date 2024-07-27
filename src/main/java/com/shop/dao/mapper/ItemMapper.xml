@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.dao.item.ItemDao">
+	<insert id="saveItem" parameterType="ivo">
+		<selectKey keyProperty="id" order="BEFORE" resultType="int">
+			SELECT NVL(MAX(id),0)+1 FROM ITEM
+		</selectKey>
+		INSERT INTO ITEM(ID, IMG_NAME, IMG_PATH, IS_SOLDOUT, DETAIL, CREATE_DATE, KIND, NAME, STOCK, ITEM_PRICE)
+		VALUES(#{id}, #{imgName}, #{imgPath}, #{isSoldout}, #{detail}, SYSDATE(), #{kind}, #{name}, #{stock}, #{item_price})
+	</insert>
+	
+	<update id="itemModify" parameterType="ivo">
+		UPDATE ITEM SET 
+			NAME = #{name},
+			STOCK = #{stock},
+			PRICE = #{price},
+			DETAIL = #{detail},
+			CREATE_DATE = SYSDATE,
+			<if test="img_name!=null">
+			IMG_NAME = #{img_name},
+			</if>
+			IMG_PATH = #{img_path},
+			KIND = #{kind}
+			WHERE ID = #{id}
+	</update>
+
+
+</mapper>

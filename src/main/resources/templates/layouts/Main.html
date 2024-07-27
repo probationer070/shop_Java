@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Main</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/layouts.css" />
+    <link rel="stylesheet" href="../css/swiper.css" />
+    <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>    
+    <script type="text/javascript" src="../js/layout.js"></script>
+</head>
+<body>
+<div class="large-container">
+	<div class="container" style="">
+		<th:block class="--header" th:replace="~{layouts/header :: header}"></th:block>
+		<div class="content">
+			<th:block class="--Home" th:replace="~{layouts/HomePage :: Home}"></th:block>			
+		</div>
+	    <p th:text="'Message: ' + ${message}">Message will appear here</p>
+	</div>
+	<th:block class="--footer" th:replace="~{layouts/footer :: footer}"></th:block>
+</div>
+</body>
+</html>

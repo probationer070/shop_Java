@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+table, tr, td, th {
+	border: 1px solid #000;
+	border-collapse: collapse;
+}
+
+.table-container {
+}
+
+table {
+
+}
+
+.icol input {
+	overflow: auto;
+	border: none;
+}
+
+.icol1 { width: 10%; }
+.icol1 input { width: 100%; text-align: center;}
+
+.icol2 { width: 5%; }
+.icol2 input { width: 100%; text-align: center;}
+
+.icol3 { width: 10%; }
+.icol3 input { width: 100%; text-align: left;}

@@ -1,0 +1,42 @@
+<th:block class="--itemForm" th:fragment="itemForm">
+	<div class="content d-flex justify-content-center mt-5">
+		<form th:action="@{/itemNewPro}" method="post" enctype="multipart/form-data">
+			<div class="item-content">
+				<div class="d-flex">
+					<label>상품 상태</label>
+					<div class="item_status d-flex">
+						<input type="radio" name="isSoldout" id="isSoldout" value="0" checked>판매중
+						<input type="radio" name="isSoldout" id="isSoldout" value="1">품절
+					</div>
+				</div>
+				<div class="item-input-box ">
+					<label>상품 종류</label>
+					<input type="text" name="kind" id="kind" placeholder="상품 종류">
+				</div>
+				<div class="item-input-box ">
+					<label>상품 이름</label>
+					<input type="text" name="name" id="name" placeholder="상품 이름">
+				</div>
+				<div class="item-input-box ">
+					<label>상품 설명</label>
+					<input type="text" name="detail" id="detail" placeholder="상품 설명">
+				</div>
+				<div class="item-input-box ">
+					<label>상품 가격</label>
+					<input type="text" name="item_price" id="item_price" placeholder="상품 가격">
+				</div>
+				<div class="item-input-box ">
+					<label>상품 재고</label>
+					<input type="text" name="stock" id="stock" placeholder="상품 가격">
+				</div>
+				<div class="item-input-box ">
+					<label>상품 이미지</label>
+					<input type="file" name="imgFile" id="imgFile">
+				</div>
+				<div class=mt-4>
+					<button type="submit" class="btn btn-primary">상품 등록</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</th:block>

@@ -1,0 +1,48 @@
+
+
+<th:block class="--itemView" th:fragment="itemView">
+<form th:action="@{/addCartItem/{id}/{itemId}(id=${user.id}, itemId=${item.id})}" method="post" name="ItemServ">
+<div class="content">
+	<!-- <p th:text="${item.id}"></p>
+	<p th:text="${user.id}"></p> -->
+	
+	<input name="itemId" type="hidden" th:value="${item.getId()}">
+	<div class="pre-Product-Body">
+		<div class="Product-Column-media">
+			<div class="Product-Image">
+				<img class="item-img" th:src="@{${item.getImgPath()}}" alt="..." />
+			</div>
+		</div>
+		<div class="Product-Column-content">
+			<div class="pre-ProductContent">
+				<div class="Product-content-Header">
+					<h1 class="Product-content-Title fz-24_28" th:text="${item.getName()}"></h1>
+					<div class="Product-content-Price">
+						<div class="ProductContent-TopBar">
+							<span th:text="'$'+${item.getItem_price()}"></span>
+						</div>
+					</div>
+				</div>
+				<p class="Product-content-Desc fz-14_21" th:text="${item.getDetail()}"></p>
+				<div class="stockCnt mb-4">
+					<label>Amount : </label>
+					<input type="text" class="amount" name="amount" value="1" placeholder="수량">
+				</div>
+				<div class="Product-content-Buy">
+					<button type="submit" name="add" class="Product-add_btn btn-primary-common btn-Button-fullWidth">
+						<img class="icon" src="/images/cart-w.png" style="width: 40px; height: 40px;">
+						<span class="m-3">Add to CART</span>
+					</button>
+				</div>
+				<div class="Product-content-otherInfo">
+					<div class="Accordians-Accordian-item">
+						<button type="button" class="Accordian-btn">Product Details</button>
+						<div class="Accordian-Body"> tawdawa tawdawa tawdawatawdawa tawdawa</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+   </form>
+</th:block>

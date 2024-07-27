@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/itemFix.css" />
+<script type="text/javascript" src="../js/item.js"></script>
+</head>
+<body>
+FIX
+<div class="table-container">
+<table>
+	<thead>
+		<tr>
+			<th class="p-2">id</th>
+			<th class="p-2">name</th>
+			<th class="p-2">soldout</th>
+			<th class="p-2">item_price</th>
+			<th class="p-2">kind</th>
+			<th class="p-2">stock</th>
+			<th class="p-2">username</th>
+			<th class="p-2">create_date</th>
+		</tr>
+	</thead>
+	<div class="Item-card" th:each="item : ${items}">
+		<tbody>
+			<tr>
+				<td class="p-2 icol icol1">
+					<input type="text" name="id" th:value="${item.id}" readonly="readonly">
+				</td>
+				<td class="p-2 icol icol5 itemModify">
+					<input type="text" name="name" th:value="${item.name}" readonly="readonly">
+				</td>
+				<td class="p-2 icol icol2">
+					<input type="text" name="soldout" th:value="${item.getIsSoldout()}" readonly="readonly">
+				</td>
+				<td class="p-2 icol icol3">
+					<input type="text" name="price" th:value="${item.item_price}" readonly="readonly">
+				</td>
+				<td class="p-2 icol icol4">
+					<input type="text" name="kind" th:value="${item.kind}" readonly="readonly">
+				</td>
+				<td class="p-2 icol icol6">
+					<input type="text" name="stock" th:value="${item.stock}" readonly="readonly">
+				</td>
+				<td class="p-2 icol icol7">
+					<input type="text" name="username" th:value="${item.getUser().getUsername()}" readonly="readonly">
+				</td> 
+				<td class="p-2 icol icol8">
+					<input type="text" name="created_date" th:value="${item.getCreateDate()}" readonly="readonly">
+				</td>
+			</tr>	
+		</tbody>
+	</div>
+</table>
+</div>
+</body>
+</html>
